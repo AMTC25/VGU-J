@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VGU-JE Student Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom scroll style for the vertical menu bar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #dc2626; /* Changed to a shade of red */
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans min-h-screen flex flex-col">
+  <header class="flex items-center justify-between bg-red-900 px-4 py-2 shadow-md">
+    <div class="flex items-center space-x-2">
+      <div class="bg-white rounded-md flex items-center justify-center w-12 h-12">
+        <span class="text-red-900 font-bold text-1xl select-none">VGU-j</span>
+      </div>
+      <class="text-white text-lg font-semibold select-none>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button aria-label="Notifications" class="text-white hover:text-gray-300 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+      </button>
+      <button aria-label="User Profile" class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white hover:ring-red-300 transition">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/54ac1b37-e924-489e-9cbc-c47bde2f6c7d.png" alt="User profile photo of a young man with dark hair wearing a casual light shirt, smiling" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2f9694f0-726c-4fd7-b12f-c2cd1ae7d7f7.png';" />
+      </button>
+    </div>
+  </header>
+
+  <nav class="bg-red-900 flex justify-around py-3 text-white text-2xl">
+    <button title="Feed" data-tab="feed" class="flex flex-col items-center space-y-0.5 focus:outline-none tab-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button title="Modules" data-tab="modules" class="flex flex-col items-center space-y-0.5 focus:outline-none tab-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round"/><rect x="14" y="4" width="7" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round"/><rect x="14" y="13" width="7" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="13" width="7" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button title="Groups" data-tab="groups" class="flex flex-col items-center space-y-0.5 focus:outline-none tab-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20a4 4 0 01-3-3.87V14a4 4 0 014-4h4a4 4 0 014 4v1.13A4 4 0 0115 20M2 9a4 4 0 014-4h1a4 4 0 014 4v1.13A4 4 0 0110 20"/></svg>
+    </button>
+    <button title="Links" data-tab="links" class="flex flex-col items-center space-y-0.5 focus:outline-none tab-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a4 4 0 005 0l4-4a4 4 0 00-5-5l-1 1M14 10a4 4 0 00-5 0l-4 4a4 4 0 005 5l1-1"/></svg>
+    </button>
+    <button title="Code" data-tab="code" class="flex flex-col items-center space-y-0.5 focus:outline-none tab-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+    </button>
+    <button title="Settings" data-tab="settings" class="flex flex-col items-center space-y-0.5 focus:outline-none tab-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l0 0a2 2 0 010 2.83 2 2 0 01-2.82 0l0 0a1.664 1.664 0 00-1.82-.33 1.65 1.65 0 00-1 1.51v0a2 2 0 01-4 0v0a1.65 1.65 0 00-1-1.51 1.664 1.664 0 00-1.82.33l0 0a2 2 0 01-2.82 0 2 2 0 010-2.83l0 0a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H5a2 2 0 010-4h0a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l0 0a2 2 0 010-2.83 2 2 0 012.82 0l0 0a1.65 1.65 0 001.82.33H14a1.65 1.65 0 001-1.51v0a2 2 0 014 0h0a1.649 1.649 0 00.33 1.82z"/></svg>
+    </button>
+    <button title="Help" data-tab="help" class="flex flex-col items-center space-y-0.5 focus:outline-none tab-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 015.83 1c0 3-3 3-3 5"/></svg>
+    </button>
+  </nav>
+
+  <main class="flex-grow p-4 max-w-md mx-auto min-h-[60vh]">
+
+    <section id="feed" class="tab-content hidden" aria-label="Feed">
+      <h2 class="text-lg font-semibold mb-3">Feed</h2>
+      <div class="divide-y rounded border border-gray-300">
+        <button class="flex items-center justify-between w-full px-4 py-3 font-semibold text-sm border-b border-gray-300 bg-red-50 hover:bg-red-100 focus:outline-none" aria-expanded="false" aria-controls="birthdaysContent" id="birthdaysBtn">
+          <div class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c.996 0 1.907.392 2.605 1.028A3.002 3.002 0 0118 15v4a1 1 0 11-2 0v-4a1 1 0 00-1-1h-.17a2.502 2.502 0 013.17-3zM8 11v2a4 4 0 015 3.7v.3h1v-4a1 1 0 10-2 0v3h-1a5.002 5.002 0 01-3-8.7zm-2 3a3 3 0 00-3 3v1a1 1 0 102 0v-1a1 1 0 011-1z"/></svg>
+            <span>Birthdays</span>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="birthdaysContent" class="hidden px-4 py-2 text-center text-gray-600 text-sm">
+          No more bits available. You have scrolled enough for today.
+        </div>
+      </div>
+    </section>
+
+    <section id="modules" class="tab-content hidden" aria-label="Modules">
+
+      <div class="mb-4 rounded border border-gray-300 bg-gray-50 shadow-sm divide-y divide-gray-200 max-w-md mx-auto">
+        <button class="w-full px-4 py-3 text-left hover:bg-gray-100 focus:outline-none text-gray-700 font-medium" data-module="edit-profile">Edit profile</button>
+        <button class="w-full px-4 py-3 text-left hover:bg-gray-100 focus:outline-none text-gray-700 font-medium" data-module="change-password">Change password</button>
+        <button class="w-full px-4 py-3 text-left hover:bg-gray-100 focus:outline-none text-gray-700 font-medium" data-module="change-secret">Change secret Q&A</button>
+        <button class="w-full px-4 py-3 text-left hover:bg-gray-100 focus:outline-none text-gray-700 font-medium" data-module="change-theme">Change theme</button>
+        <button class="w-full px-4 py-3 text-left hover:bg-gray-100 focus:outline-none text-gray-700 font-medium" data-module="manage-sessions">Manage sessions</button>
+        <button class="w-full px-4 py-3 text-left hover:bg-gray-100 focus:outline-none text-gray-700 font-medium" data-module="manage-notifications">Manage notifications</button>
+        <button class="w-full px-4 py-3 text-left hover:bg-gray-100 focus:outline-none text-gray-700 font-medium" data-module="manage-email">Manage email notifications</button>
+      </div>
+
+      <section id="edit-profile" class="hidden max-w-md mx-auto">
+        <h2 class="text-xl font-bold mb-3">Edit profile</h2>
+        <article class="border border-gray-300 rounded-lg p-6 mb-6 text-center">
+          <img 
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/56d4f1ab-db90-47b8-b516-d1328052abca.png" 
+            alt="Profile photo of Abhi Raj, young man with dark hair wearing a white shirt with pattern" 
+            class="mx-auto rounded-full mb-3" 
+            onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3bc073c6-58d4-4bbe-aea3-c5e237aac52f.png';"
+          />
+          <p class="text-lg font-semibold">Username</p>
+          <p class="text-sm text-gray-500 mb-2">User</p>
+          <p class="text-xs text-gray-600">
+            user-bio
+          </p>
+        </article>
+        <div class="border border-gray-300 rounded-lg px-4 py-3">
+          <h3 class="font-semibold mb-1">Biological information</h3>
+          <div>
+            <label class="block font-medium text-sm mb-1" for="dob">Date of birth</label>
+            <input type="date" id="dob" class="w-full border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-red-500" />
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="groups" class="tab-content hidden max-w-md mx-auto">
+      <h2 class="text-lg font-semibold mb-3">Groups</h2>
+      <div class="space-y-3">
+        <div class="border border-red-900 rounded p-3">
+          <div class="flex space-x-2 items-center mb-1 text-red-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.485 0 4.5-2.015 4.5-4.5S14.485 3 12 3 7.5 5.015 7.5 7.5 9.515 12 12 12zm0 1.5c-3.038 0-5.5 2.462-5.5 5.5v1h11v-1c0-3.038-2.462-5.5-5.5-5.5z"/></svg>
+            <span class="font-semibold">Academic Reinforcement Program</span>
+          </div>
+          <p class="text-sm text-gray-600">Academic Reinforcement Program envision to develop the knowledge base of the students, by abetting them to learn and teach.</p>
+        </div>
+        <div class="border border-red-900 rounded p-3">
+          <div class="flex space-x-2 items-center mb-1 text-red-900 font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.485 0 4.5-2.015 4.5-4.5S14.485 3 12 3 7.5 5.015 7.5 7.5 9.515 12 12 12zm0 1.5c-3.038 0-5.5 2.462-5.5 5.5v1h11v-1c0-3.038-2.462-5.5-5.5-5.5z"/></svg>
+            <span>American Institute of Chemical Engineers</span>
+          </div>
+          <p class="text-sm text-gray-600">AIChE is world's leading organization for chemical engineers, with more than 60,000 members from more than 110 countries.</p>
+        </div>
+        <div class="border border-red-900 rounded p-3">
+          <div class="flex space-x-2 items-center mb-1 text-red-900 font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.485 0 4.5-2.015 4.5-4.5S14.485 3 12 3 7.5 5.015 7.5 7.5 9.515 12 12 12zm0 1.5c-3.038 0-5.5 2.462-5.5 5.5v1h11v-1c0-3.038-2.462-5.5-5.5-5.5z"/></svg>
+            <span>American Society of Mechanical Engineers</span>
+          </div>
+          <p class="text-sm text-gray-600">ASME VGU-JAIPUR Chapter, the first and leading Chapter of ASME in India, was officially registered as a society in Feb 2007 by</p>
+        </div>
+        <div class="border border-red-900 rounded p-3">
+          <div class="flex space-x-2 items-center mb-1 text-red-900 font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.485 0 4.5-2.015 4.5-4.5S14.485 3 12 3 7.5 5.015 7.5 7.5 9.515 12 12 12zm0 1.5c-3.038 0-5.5 2.462-5.5 5.5v1h11v-1c0-3.038-2.462-5.5-5.5-5.5z"/></svg>
+            <span>Association for Computing Machinery</span>
+          </div>
+          <p class="text-sm text-gray-600">The VGU-JAIPUR ACM Student Chapter is an official student body of VGU-JAIPUR concerned with fostering general and scientific</p>
+        </div>
+        <div class="border border-gray-300 rounded p-3">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5d56bef8-c132-446b-b027-367e50249168.png" alt="Cinema Club logo and text" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fb13762f-a409-4044-97da-40c14761a365.png';" class="mb-1" />
+          <p class="text-sm text-gray-600">A common place for all the movie freaks to discuss their hearts out! To explore the intricacies of the cinematic world.</p>
+        </div>
+        <footer class="pt-7 text-xs text-center text-gray-400 select-none">VGU-J Team</footer>
+      </div>
+    </section>
+
+    <section id="links" class="tab-content hidden max-w-md mx-auto">
+      <h2 class="text-lg font-semibold mb-3">Links</h2>
+      <div class="space-y-3">
+        <a href="#" class="flex items-center p-3 border border-red-900 rounded hover:bg-red-50 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-900 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m6 0l-3 3m0-6l3 3"/></svg>
+          <div>
+            <p class="font-semibold">Webmail</p>
+            <p class="text-xs text-gray-500">Webmail</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center p-3 border border-red-900 rounded hover:bg-red-50 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-900 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round"/><rect x="14" y="4" width="7" height="7" rx="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <p class="font-semibold">Library</p>
+            <p class="text-xs text-gray-500">Library</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center p-3 border border-red-900 rounded hover:bg-red-50 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-900 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          <div>
+            <p class="font-semibold">Academics</p>
+            <p class="text-xs text-gray-500">Academics</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center p-3 border border-red-900 rounded hover:bg-red-50 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-900 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17l4-4 4 4"/></svg>
+          <div>
+            <p class="font-semibold">Network Support</p>
+            <p class="text-xs text-gray-500">Network Support</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center p-3 border border-red-900 rounded hover:bg-red-50 focus:outline-none">
+          <img src="LOGO.png" alt="VGU-JAIPUR official logo with circular emblem and text" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e214227c-adcb-42e6-a795-2b0f9fa53665.png';" class="mr-3" />
+          <div>
+            <p class="font-semibold">VGU-JAIPUR</p>
+            <p class="text-xs text-gray-500">VGU-JAIPUR</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center p-3 border border-red-900 rounded hover:bg-red-50 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-900 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 10-12 0 6 6 0 0012 0zM12 14v7"/></svg>
+          <div>
+            <p class="font-semibold">Support @ VGU-JAIPUR</p>
+            <p class="text-xs text-gray-500">Support @ VGU-JAIPUR</p>
+          </div>
+        </a>
+      </div>
+      <footer class="pt-7 text-xs text-center text-gray-400 select-none">VGU-J Team</footer>
+    </section>
+
+    <section id="code" class="tab-content hidden max-w-md mx-auto p-4 text-center text-gray-500">
+      <h2 class="text-lg font-semibold mb-4">Code Page</h2>
+      <p>This section is reserved for developer or coding related integrations.</p>
+    </section>
+
+    <section id="settings" class="tab-content hidden max-w-md mx-auto p-4 text-center text-gray-500">
+      <h2 class="text-lg font-semibold mb-4">Settings</h2>
+      <p>Customize your preferences here.</p>
+    </section>
+
+    <section id="help" class="tab-content hidden max-w-md mx-auto p-4 text-center text-gray-500">
+      <h2 class="text-lg font-semibold mb-4">Help & Support</h2>
+      <p>Find answers or reach out for support here.</p>
+    </section>
+  </main>
+
+  <script>
+    // JavaScript for tabs switching
+    const buttons = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+    const moduleButtons = document.querySelectorAll('[data-module]');
+    const moduleSections = document.querySelectorAll('#modules > section');
+
+    function hideAllTabs() {
+      contents.forEach(c => c.classList.add('hidden'));
+      buttons.forEach(b => b.classList.remove('text-white', 'bg-red-900'));
+    }
+    function hideAllModules() {
+      moduleSections.forEach(s => s.classList.add('hidden'));
+      moduleButtons.forEach(b => b.classList.remove('bg-gray-100', 'font-semibold'));
+    }
+
+    function showTab(tabName) {
+      hideAllTabs();
+      const tab = document.getElementById(tabName);
+      if (tab) {
+        tab.classList.remove('hidden');
+      }
+      buttons.forEach(b => {
+        if (b.dataset.tab === tabName) {
+          b.classList.add('text-white', 'bg-red-900');
+        }
+      });
+
+      // Show first module by default in modules tab
+      if(tabName === 'modules') {
+        hideAllModules();
+        const firstModule = moduleSections[0];
+        if(firstModule) firstModule.classList.remove('hidden');
+        const firstButton = moduleButtons[0];
+        if(firstButton) firstButton.classList.add('bg-gray-100', 'font-semibold');
+      }
+    }
+
+    // Module Buttons click handler
+    moduleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        hideAllModules();
+        moduleSections.forEach(section => {
+          if(section.id === btn.dataset.module) {
+            section.classList.remove('hidden');
+          }
+        });
+        moduleButtons.forEach(b => b.classList.remove('bg-gray-100', 'font-semibold'));
+        btn.classList.add('bg-gray-100', 'font-semibold');
+      });
+    });
+
+    // Feed birthdays expand/collapse
+    const birthdaysBtn = document.getElementById('birthdaysBtn');
+    const birthdaysContent = document.getElementById('birthdaysContent');
+    birthdaysBtn.addEventListener('click', () => {
+      const isExpanded = birthdaysBtn.getAttribute('aria-expanded') === 'true';
+      birthdaysBtn.setAttribute('aria-expanded', !isExpanded);
+      if (!isExpanded) {
+        birthdaysContent.classList.remove('hidden');
+      } else {
+        birthdaysContent.classList.add('hidden');
+      }
+    });
+
+    // Show default tab on load (Feed)
+    showTab('feed');
+
+    // Attach tab buttons click event
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabName = button.dataset.tab;
+        showTab(tabName);
+      });
+    });
+  </script>
+
+</body>
+</html>
